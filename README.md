@@ -1,105 +1,73 @@
-# desafio-entrevista-nodejs - Leilão de Carros
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
-## Objetivo:
-Desenvolver uma aplicação backend em Nest.js com Swagger, Prisma.js e autenticação JWT para gerenciar um leilão de carros.
-Desenvolver uma aplicação mobile em ReactNative/Expo e web Next.js em que o usuário possa se cadastrar, logar, visualizar leilões, cadastrar leilões e dar um lance.
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-## Tecnologias obrigatórias
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-Next.js
-Nest.js
-Prisma.js
-Swagger
-JWT para autenticação
-React Native / Expo
-MongoDB
+## Description
 
-## Entidades
-Exemplo de modelagem (não é necessário seguir à risca)
-model User {
-  id       String      @id @default(autoincrement())
-  name     String
-  email    String   @unique
-  password String
-}
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-model Auction {
-  id               String      @id @default(autoincrement())
-  brand            String
-  model            String
-  year             Int
-  startingBid      Float
-  auctionStartDate DateTime
-  auctionEndDate   DateTime
-  creator          User     @relation(fields: [userId], references: [id])
-  creatorId        String
-  bids             Bid[]
-}
+## Installation
 
-type Bid {
-  amount   Float
-  user     User     @relation(fields: [userId], references: [id])
-  userId   String
-}
+```bash
+$ npm install
+```
 
-## Funcionalidades:
+## Running the app
 
-### Cadastro de Usuários:
-Criar um endpoint para cadastro de usuário com os seguintes campos:
-Nome
-Email
-Senha (hash)
-Todos os campos são obrigatórios.
+```bash
+# development
+$ npm run start
 
-### Autenticação:
-Implementar autenticação JWT.
+# watch mode
+$ npm run start:dev
 
-### Cadastro de Veículos para Leilão:
-Criar um endpoint para cadastrar veículos para leilão com os seguintes campos:
-Marca
-Modelo
-Ano
-Lance Inicial
-Data de Início do Leilão
-Data de Fim do Leilão
-Todos os campos são obrigatórios.
+# production mode
+$ npm run start:prod
+```
 
-### Listagem de Veículos para Usuários:
-Criar um endpoint para os usuários visualizarem os veículos disponíveis para leilão.
-Retornar informações básicas dos veículos, incluindo o lance inicial e último lance.
+## Test
 
-### Lance em Leilão:
-Criar um endpoint para os usuários darem lances em um veículo específico.
-Validar se o lance é maior que o lance atual.
+```bash
+# unit tests
+$ npm run test
 
-### Controle de Autenticação no Frontend e mobile:
-Implementar autenticação JWT.
-Usuários só podem visualizar leilões, criar leilões e dar lances se estiverem autenticados.
+# e2e tests
+$ npm run test:e2e
 
-## Requisitos Técnicos:
-- Utilizar Prisma.js para modelagem e interação com o banco de dados MongoDB.
-- Documentar a API com Swagger.
-- Utilizar JWT para autenticação.
-- Utilizar Nest.js, Next.js e Expo.
-- Implementar testes
-- Implementar testes utilizando TDD (opcional, mas ganha mais pontos).
-- O retorno deverá ser em formato JSON;
-- Requisições GET, POST, PUT ou DELETE, conforme a melhor prática;
+# test coverage
+$ npm run test:cov
+```
 
+## Support
 
-## Ganha mais pontos:
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-Sumário da quantidade de entrada e saída de veículos.
-Sumário da quantidade de entrada e saída de veículos por hora.
-Criação de relatórios para visão ao dono do estabelecimento.
-Desenvolvimento utilizando TDD.
+## Stay in touch
 
-## Entregáveis:
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-- Repositório Git com o código-fonte.
-- Crie um fork do teste para acompanharmos o seu desenvolvimento através dos seus commits.
-- Arquivo README.md descrevendo as tecnologias utilizadas, chamadas dos serviços e configurações necessárias para executar a aplicação.
+## License
 
-## Importante!
-- O teste é propositalmente longo, não se preocupe se não concluir tudo a tempo, todavia os itens mais importantes são, código limpo, princípios SOLID, e Testes.
-- Você pode inserir os 3 projetos no mesmo repositório com nomes frontend, backend e mobile.
+Nest is [MIT licensed](LICENSE).
